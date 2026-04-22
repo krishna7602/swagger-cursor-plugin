@@ -1,25 +1,93 @@
-# Cursor AI Rules for Swagger
+# Swagger Petstore MCP Plugin - Cursor Rules
 
-You have access to the `Swagger` MCP server tools.
-Purpose: This is a sample server Petstore server.  You can find out more about Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).  For this sample, you can use the api key `special-key` to test the authorization filters.
+## Core Directive
+Always consult the `skills/` directory for tool-specific instructions before suggesting or implementing any API operations. Each tool has dedicated guidance that MUST be referenced.
 
-## Usage Guidelines
-- When the user asks related questions, prefer using the `swagger` MCP tools.
-- You can access these tools by typing `@` followed by the server name.
+## Plugin Context
+This is a comprehensive MCP plugin for the Swagger Petstore API. The user is working with a classic REST API that manages pets, orders, and users in a pet store context.
 
-## Available Tools (Highlights)
-- `uploadFile`: 
-- `addPet`: 
-- `updatePet`: 
-- `findPetsByStatus`: Multiple status values can be provided with comma separated strings
-- `findPetsByTags`: Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.
-- `getPetById`: Returns a single pet
-- `updatePetWithForm`: 
-- `deletePet`: 
-- `getInventory`: Returns a map of status codes to quantities
-- `placeOrder`: 
+## Available Tools Overview
+- **Pet Management**: addPet, updatePet, updatePetWithForm, getPetById, deletePet, findPetsByStatus, findPetsByTags, uploadFile
+- **Store Operations**: getInventory, placeOrder, getOrderById, deleteOrder  
+- **User Management**: createUser, createUsersWithListInput, createUsersWithArrayInput, getUserByName, updateUser, deleteUser, loginUser, logoutUser
 
-## Interaction Pattern
-1. Analyze user intent.
-2. If the user needs data or actions from Swagger, call the appropriate MCP tool.
-3. Process the results and explain them clearly to the user.
+## Behavior Guidelines
+
+### 1. Skill File Consultation (MANDATORY)
+- Before suggesting ANY operation, reference the corresponding SKILL.md file in the `skills/` directory
+- Use the "When to use" section to validate the operation fits the user's scenario
+- Follow the "Step-by-Step" guide for parameter handling
+- Apply "Pro-tips" for optimal implementation
+- Use "Parameter Mapping" tables to ensure required parameters are provided
+- Reference "Failure Handling" for error scenarios
+
+### 2. API Key Handling
+- The test API key is `special-key` - use this for operations requiring authentication
+- Many operations work without authentication - don't over-complicate simple requests
+- When authentication fails, suggest using the special-key
+
+### 3. Parameter Validation
+- Always validate required parameters before suggesting API calls
+- Use the Parameter Mapping tables in skill files to distinguish required vs optional parameters
+- Provide sensible defaults for optional parameters when appropriate
+- Validate data types (strings, integers, arrays, objects) before API calls
+
+### 4. Error Handling Excellence
+- Reference the "Failure Handling" section in relevant skill files for specific error codes
+- Provide actionable recovery suggestions, not just error explanations
+- For 4xx errors, focus on parameter validation and correction
+- For 5xx errors, suggest retry strategies or alternative approaches
+
+### 5. Response Processing
+- Always explain what successful responses contain and how to use them
+- Help users extract relevant data from API responses
+- Suggest follow-up operations based on response data
+- Use response data to inform subsequent API calls
+
+### 6. Context-Aware Suggestions
+- **Pet Operations**: Consider the full lifecycle (create → update → find → delete)
+- **Order Flow**: Guide through inventory check → order placement → order tracking
+- **User Management**: Consider authentication state and user permissions
+- **File Operations**: Explain file handling and format requirements
+
+### 7. Code Quality Standards
+- Always provide working, tested code examples
+- Use proper error handling with try-catch blocks
+- Include parameter validation in code suggestions
+- Use meaningful variable names that reflect the domain (pet, order, user)
+- Add comments explaining API-specific logic
+
+### 8. Learning Enhancement
+- Reference the skill files' worked examples for similar scenarios
+- Explain the business logic behind API operations
+- Connect related operations (e.g., create pet → upload image → find by status)
+- Suggest testing strategies using the provided test data
+
+### 9. Domain-Specific Intelligence
+- Understand pet store business logic (inventory, orders, customer management)
+- Suggest realistic test data (pet names, categories, tags)
+- Recommend proper status transitions (available → pending → sold)
+- Consider real-world constraints (positive quantities, valid date ranges)
+
+### 10. Progressive Disclosure
+- Start with simple examples, then show advanced usage
+- Explain parameter relationships and dependencies  
+- Build complexity gradually (single pet → multiple pets → filtered searches)
+- Connect operations in logical workflows
+
+## Response Format
+Always structure responses with:
+1. **Brief explanation** of the operation and its purpose
+2. **Parameter validation** using skill file guidance
+3. **Code example** with proper error handling
+4. **Response explanation** with data extraction tips
+5. **Next steps** or related operations
+6. **Reference** to relevant skill file for deeper learning
+
+## Testing Guidance
+- Use the special-key for authentication testing
+- Provide test data that works with API constraints
+- Reference skill file examples for proven working cases
+- Suggest validation steps before making API calls
+
+Remember: The skill files are your primary reference. They contain the detailed, tested guidance for each operation. Always consult them first, then provide enhanced context and examples based on that foundation.
