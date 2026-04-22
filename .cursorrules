@@ -1,93 +1,57 @@
-# Swagger Petstore MCP Plugin - Cursor Rules
+# Swagger Petstore MCP Plugin Rules
 
-## Core Directive
-Always consult the `skills/` directory for tool-specific instructions before suggesting or implementing any API operations. Each tool has dedicated guidance that MUST be referenced.
+## Core Instructions
+When working with the Swagger Petstore MCP plugin, always consult the `skills/` directory for tool-specific instructions before using any API endpoints.
 
-## Plugin Context
-This is a comprehensive MCP plugin for the Swagger Petstore API. The user is working with a classic REST API that manages pets, orders, and users in a pet store context.
+## Skill Documentation Location
+- All tool-specific documentation is located in the `skills/` directory
+- Each tool has a dedicated SKILL.md file (e.g., `skills/addPet.md`)
+- Always reference the appropriate SKILL.md before making API calls
 
-## Available Tools Overview
-- **Pet Management**: addPet, updatePet, updatePetWithForm, getPetById, deletePet, findPetsByStatus, findPetsByTags, uploadFile
+## Authentication Requirements
+- Use API key `special-key` for testing authorization filters
+- Some endpoints require authentication - check individual SKILL.md files
+- Handle authentication errors gracefully
+
+## API Usage Patterns
+- Always validate parameters before making API calls
+- Use appropriate HTTP methods as specified in SKILL.md files
+- Handle common error scenarios (404, 400, 401, 500)
+- Follow rate limiting best practices
+
+## Parameter Handling
+- Check SKILL.md files for required vs optional parameters
+- Use proper data types and formats
+- Validate IDs and enum values before submission
+
+## Error Recovery
+- Implement retry logic for network failures
+- Provide meaningful error messages to users
+- Log errors appropriately for debugging
+
+## Response Processing
+- Parse API responses according to SKILL.md specifications
+- Handle both success and error responses
+- Extract relevant data for user presentation
+
+## Best Practices
+1. **Always check skills/ directory first** - Each tool has specific usage patterns
+2. **Validate inputs** - Use parameter mapping tables in SKILL.md files  
+3. **Handle errors gracefully** - Follow failure handling sections
+4. **Use realistic examples** - Refer to worked examples in SKILL.md files
+5. **Test with provided data** - Use sample data from documentation
+
+## Tool Categories
+- **Pet Operations**: addPet, updatePet, findPetsByStatus, findPetsByTags, getPetById, updatePetWithForm, deletePet, uploadFile
 - **Store Operations**: getInventory, placeOrder, getOrderById, deleteOrder  
-- **User Management**: createUser, createUsersWithListInput, createUsersWithArrayInput, getUserByName, updateUser, deleteUser, loginUser, logoutUser
+- **User Operations**: createUser, createUsersWithArrayInput, createUsersWithListInput, getUserByName, updateUser, deleteUser, loginUser, logoutUser
 
-## Behavior Guidelines
+## Development Workflow
+1. Identify the required tool/endpoint
+2. Read the corresponding SKILL.md file in skills/ directory
+3. Follow the step-by-step guide
+4. Use parameter mapping for validation
+5. Implement error handling as specified
+6. Test with provided examples
 
-### 1. Skill File Consultation (MANDATORY)
-- Before suggesting ANY operation, reference the corresponding SKILL.md file in the `skills/` directory
-- Use the "When to use" section to validate the operation fits the user's scenario
-- Follow the "Step-by-Step" guide for parameter handling
-- Apply "Pro-tips" for optimal implementation
-- Use "Parameter Mapping" tables to ensure required parameters are provided
-- Reference "Failure Handling" for error scenarios
-
-### 2. API Key Handling
-- The test API key is `special-key` - use this for operations requiring authentication
-- Many operations work without authentication - don't over-complicate simple requests
-- When authentication fails, suggest using the special-key
-
-### 3. Parameter Validation
-- Always validate required parameters before suggesting API calls
-- Use the Parameter Mapping tables in skill files to distinguish required vs optional parameters
-- Provide sensible defaults for optional parameters when appropriate
-- Validate data types (strings, integers, arrays, objects) before API calls
-
-### 4. Error Handling Excellence
-- Reference the "Failure Handling" section in relevant skill files for specific error codes
-- Provide actionable recovery suggestions, not just error explanations
-- For 4xx errors, focus on parameter validation and correction
-- For 5xx errors, suggest retry strategies or alternative approaches
-
-### 5. Response Processing
-- Always explain what successful responses contain and how to use them
-- Help users extract relevant data from API responses
-- Suggest follow-up operations based on response data
-- Use response data to inform subsequent API calls
-
-### 6. Context-Aware Suggestions
-- **Pet Operations**: Consider the full lifecycle (create → update → find → delete)
-- **Order Flow**: Guide through inventory check → order placement → order tracking
-- **User Management**: Consider authentication state and user permissions
-- **File Operations**: Explain file handling and format requirements
-
-### 7. Code Quality Standards
-- Always provide working, tested code examples
-- Use proper error handling with try-catch blocks
-- Include parameter validation in code suggestions
-- Use meaningful variable names that reflect the domain (pet, order, user)
-- Add comments explaining API-specific logic
-
-### 8. Learning Enhancement
-- Reference the skill files' worked examples for similar scenarios
-- Explain the business logic behind API operations
-- Connect related operations (e.g., create pet → upload image → find by status)
-- Suggest testing strategies using the provided test data
-
-### 9. Domain-Specific Intelligence
-- Understand pet store business logic (inventory, orders, customer management)
-- Suggest realistic test data (pet names, categories, tags)
-- Recommend proper status transitions (available → pending → sold)
-- Consider real-world constraints (positive quantities, valid date ranges)
-
-### 10. Progressive Disclosure
-- Start with simple examples, then show advanced usage
-- Explain parameter relationships and dependencies  
-- Build complexity gradually (single pet → multiple pets → filtered searches)
-- Connect operations in logical workflows
-
-## Response Format
-Always structure responses with:
-1. **Brief explanation** of the operation and its purpose
-2. **Parameter validation** using skill file guidance
-3. **Code example** with proper error handling
-4. **Response explanation** with data extraction tips
-5. **Next steps** or related operations
-6. **Reference** to relevant skill file for deeper learning
-
-## Testing Guidance
-- Use the special-key for authentication testing
-- Provide test data that works with API constraints
-- Reference skill file examples for proven working cases
-- Suggest validation steps before making API calls
-
-Remember: The skill files are your primary reference. They contain the detailed, tested guidance for each operation. Always consult them first, then provide enhanced context and examples based on that foundation.
+Remember: The skills/ directory is your primary reference for all API interactions.
