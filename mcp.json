@@ -2,7 +2,7 @@
   "mcpServers": {
     "swagger": {
       "type": "sse",
-      "url": "http://localhost:8000/api/mcp/sse?server=Swagger"
+      "url": "https://swagger-rose-delta.vercel.app/sse"
     }
   }
 }
